@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click to add</title>
+    <style>
+        body {
+            position: relative;
+        }
+        .mikey {
+            position: absolute;
+        }
+        #mikeyButton {
+            position: absolute;
+            z-index: 1; /* Set a higher z-index to make sure it's above the text */
+        }
+    </style>
+</head>
+<body>
+    <button id="mikeyButton">ADD MORE MIKEYS</button>
+    <script>
+        const mikeyButton = document.getElementById("mikeyButton");
+        let mikeyCount = 1;
+
+        mikeyButton.addEventListener("click", () => {
+            createMikey();
+        });
+
+        function createMikey() {
+            const mikeyElement = document.createElement("div");
+            mikeyElement.className = "mikey";
+            mikeyElement.innerText = "Customize this";
+            
+            const randomX = Math.random() * window.innerWidth;
+            const randomY = Math.random() * window.innerHeight;
+            
+            mikeyElement.style.left = `${randomX}px`;
+            mikeyElement.style.top = `${randomY}px`;
+            
+            document.body.appendChild(mikeyElement);
+
+            mikeyCount++;
+            mikeyButton.innerText = `ADD MORE MIKEYS (${mikeyCount})`;
+        }
+    </script>
+</body>
+</html>
